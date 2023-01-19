@@ -2,9 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+       stage('Build') {
+                steps {
+                    git url: 'https://github.com/naiveskill/devops.git', branch: 'main'
+                }
+       }
+
+        stage('Test') {
             steps {
-                echo 'Hello World'
+                bat "mvn clean install"
+                sh "mvn clean install -P production"
             }
         }
     }

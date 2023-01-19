@@ -9,7 +9,7 @@ pipeline {
        }
         stage('Test') {
             steps {
-                configFileProvider([configFile(fileId: 'my-maven-settings-dot-xml', variable: 'MAVEN_SETTINGS_XML')]) {
+                configFileProvider([configFile(fileId: 'my-maven-settings-dot-xml', variable: 'MAVEN_SETTINGS_XML')])
                 sh 'mvn -U --batch-mode -s $MAVEN_SETTINGS_XML clean install -P foo'
             }
         }
